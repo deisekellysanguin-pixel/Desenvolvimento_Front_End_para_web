@@ -1,0 +1,864 @@
+/* ------------------- */
+/* RESET E GLOBAIS     */
+/* ------------------- */
+
+/* Importa a fonte 'Montserrat' do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+    /* Cores Primárias e de Destaque */
+    --cor-primaria: #6A0DAD; /* Roxo principal */
+    --cor-primaria-escura: #580a8a; /* Roxo escuro para hover/interação */
+    --cor-secundaria: #C471ED; /* Lilás/Rosa para destaque */
+
+    /* Neutras */
+    --cor-texto: #333; /* Cinza Escuro */
+    --cor-fundo: #f9f9f9; /* Branco suave */
+    --cor-borda-suave: #e0e0e0; /* Cinza claro para bordas */
+    --cor-branco: #FFFFFF;
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* Tipografia Hierárquica */
+    --font-size-xxl: 3.052rem; /* Para títulos de grande impacto (Hero) */
+    --font-size-xl: 2.441rem; /* Para títulos de seção (h2) */
+    --font-size-lg: 1.953rem; /* Para subtítulos (h3) */
+    --font-size-md: 1.563rem; /* Para elementos de destaque (logo) */
+    --font-size-base: 1rem;    /* Tamanho base para parágrafos e links */
+    --font-size-sm: 0.8rem;    /* Para textos menores (footer, legendas) */
+
+    /* Sistema de Espaçamento Modular (base 8px) */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-xxl: 64px;
+}
+
+/* Animação para elementos surgirem suavemente */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação para destacar elementos importantes */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--sombra-suave);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(196, 113, 237, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: var(--sombra-suave);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto); 
+    line-height: 1.6;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+    grid-template-columns: 100%;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden; /* Previne scroll horizontal */
+}
+
+section {
+    padding: var(--space-xxl) var(--space-md);
+    /* max-width agora é controlado pelo .container */
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    color: var(--cor-primaria);
+    line-height: 1.2;
+}
+
+h1 { font-size: var(--font-size-xxl); margin-bottom: var(--space-md); text-align: center; }
+h2 { font-size: var(--font-size-xl); margin-bottom: var(--space-lg); text-align: center; }
+h3 { font-size: var(--font-size-lg); margin-bottom: var(--space-sm); }
+
+p {
+    margin-bottom: var(--space-sm);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto var(--space-lg) auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--cor-secundaria);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* ------------------- */
+/* UTILITÁRIOS DE ACESSIBILIDADE */
+/* ------------------- */
+
+/* Oculta um elemento visualmente, mas o mantém acessível para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ------------------- */
+/* CABEÇALHO E NAVEGAÇÃO */
+/* ------------------- */
+
+header {
+    background-color: var(--cor-branco);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--sombra-suave);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo-text {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    color: var(--cor-primaria);
+    letter-spacing: -1px;
+    animation: fadeInDown 0.8s ease-out; /* Animação ao carregar a página */
+    transition: color 0.3s ease;
+}
+
+.logo-text span {
+    color: var(--cor-secundaria); 
+    font-size: 1.2em; /* Relativo ao tamanho do logo-text */
+    margin: 0 2px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+header > a:hover .logo-text span {
+    transform: rotate(90deg) scale(1.1);
+}
+
+header nav a {
+    margin-left: var(--space-md);
+    font-size: var(--font-size-base);
+}
+
+header button {
+    display: none; /* Oculto em telas maiores por padrão */
+}
+
+/* Estilos para o botão hambúrguer */
+#btn-mobile {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--cor-primaria);
+    position: relative;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--cor-primaria);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hamburger::before {
+    top: -6px;
+}
+
+.hamburger::after {
+    bottom: -6px;
+}
+
+/* Animação do hambúrguer para 'X' */
+#btn-mobile.active .hamburger {
+    background-color: transparent; /* Esconde o traço do meio */
+}
+
+#btn-mobile.active .hamburger::before {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#btn-mobile.active .hamburger::after {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ------------------- */
+/* RODAPÉ              */
+/* ------------------- */
+
+footer {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: var(--space-xl) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs); /* Espaçamento entre os elementos do rodapé */
+}
+
+footer h3, footer h4 {
+    color: var(--cor-branco);
+    font-size: 1.5rem;
+}
+
+footer p {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-xs);
+}
+
+/* Remove a margem inferior do último parágrafo no rodapé */
+footer p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* ------------------- */
+/* PÁGINA INICIAL (index.html) */
+/* ------------------- */
+
+#hero {
+    text-align: center;
+    background: linear-gradient(to right, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-branco);
+    padding: var(--space-lg) var(--space-md); /* Reduz ainda mais o espaçamento vertical */
+}
+
+#hero h1 {
+    color: var(--cor-branco);
+    font-size: var(--font-size-lg); /* Reduz ainda mais o tamanho do título principal */
+}
+
+/* Reduz o parágrafo da seção hero para um visual mais compacto */
+#hero p {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+}
+
+#hero a {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+    padding: var(--space-xs) var(--space-md); /* Diminui o padding do botão */
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: var(--space-sm); /* Diminui o espaço acima do botão */
+    font-weight: 700;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#hero a:hover {
+    transform: translateY(-3px);
+    background-color: #f0e4f7; /* Lilás bem claro para o hover */
+}
+
+/* Melhora o espaçamento entre os artigos da seção "Quem Somos" */
+#quem-somos article {
+    background-color: var(--cor-branco);
+    padding: var(--space-md);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    height: 100%; /* Garante que os cards tenham a mesma altura */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-top: 4px solid var(--cor-secundaria);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#quem-somos .col-lg-4:hover article {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Ajusta o tamanho do título dentro dos cards da missão */
+#quem-somos article h3 {
+    color: var(--cor-secundaria);
+    font-size: 1.5rem; /* Um pouco menor para caber melhor no card */
+}
+
+/* Ajusta o texto e a lista dentro dos cards da missão */
+#quem-somos article p, #quem-somos article li {
+    color: #555; /* Um cinza mais suave para o texto */
+    font-size: 0.95rem; /* Levemente menor para um visual mais limpo */
+}
+
+/* Garante que a lista de valores ou o parágrafo ocupe o espaço restante, alinhando o conteúdo */
+#quem-somos article ul, #quem-somos article p {
+    flex-grow: 1;
+}
+
+#quem-somos ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left; /* Alinha a lista de valores à esquerda para melhor legibilidade */
+}
+
+#quem-somos li {
+    margin-bottom: var(--space-xs);
+}
+
+.quem-somos-image {
+    /* Adiciona espaço abaixo da imagem principal da seção */
+    margin-bottom: var(--space-lg);
+}
+
+.quem-somos-image figcaption {
+    text-align: center;
+    margin-top: var(--space-xs);
+    font-size: var(--font-size-sm);
+    color: #777;
+    font-style: italic;
+}
+
+#impacto {
+    background: linear-gradient(to right, var(--cor-primaria), var(--cor-primaria-escura));
+    color: var(--cor-branco);
+}
+
+/* Garante que os títulos e parágrafos na seção de impacto sejam brancos */
+#impacto h2, #impacto p {
+    color: var(--cor-branco);
+}
+
+#impacto-stats {
+    text-align: center;
+    /* display: flex e justify-content agora são controlados pelo .row */
+    /* gap é controlado pelo espaçamento das colunas */
+    padding-top: var(--space-lg);
+}
+
+#impacto h3 {
+    font-size: var(--font-size-xxl);
+    color: var(--cor-secundaria);
+    text-shadow: 0 2px 10px rgba(196, 113, 237, 0.3);
+}
+
+/* Estilo para os cards de estatísticas */
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--space-md);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.stat-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-5px);
+}
+
+/* --- Seção Contato --- */
+#contato {
+    background-color: var(--cor-branco);
+}
+
+.contact-card {
+    background-color: var(--cor-fundo);
+    padding: var(--space-md);
+    border-radius: 8px;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.urgent-help {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    animation: pulse 2.5s infinite ease-in-out;
+}
+
+.urgent-help h3, .urgent-help a {
+    color: var(--cor-branco);
+}
+
+.urgent-help a {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: var(--font-size-md);
+    margin: var(--space-xs) 0;
+    transition: background-color 0.3s ease;
+}
+
+.urgent-help a:hover {
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-branco); /* Garante que a cor do texto não mude no hover */
+}
+
+.phone-icon {
+    margin-right: var(--space-xs);
+}
+
+/* ------------------- */
+/* PÁGINA PROJETOS (projetos.html) */
+/* ------------------- */
+
+/* Agrupador de títulos da página */
+.page-header {
+    padding: var(--space-xl) var(--space-md);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    background: linear-gradient(to right, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-branco);
+    border-radius: 8px;
+}
+
+.page-header h1, .page-header h2 {
+    color: var(--cor-branco);
+}
+
+.page-header h2 {
+    opacity: 0.9;
+    font-weight: 400;
+}
+#projetos article {
+    background-color: var(--cor-branco);
+    border-radius: 8px;
+    box-shadow: var(--sombra-suave);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 100%; /* Garante que os cards na mesma linha tenham a mesma altura */
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid var(--cor-secundaria);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projetos article:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+#projetos article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* Adiciona um contêiner para o conteúdo de texto para controlar o preenchimento e o alinhamento */
+.project-content {
+    padding: var(--space-md);
+    text-align: center;
+    flex-grow: 1; /* Faz com que este elemento ocupe o espaço restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content p {
+    flex-grow: 1; /* Empurra o botão (se houver) para baixo */
+}
+
+#ajudar {
+    background-color: var(--cor-fundo); /* Fundo da seção para destacar os cards */
+}
+
+#ajudar #voluntariado, #ajudar #doacoes {
+    background-color: var(--cor-branco); /* Cards agora são brancos */
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: var(--sombra-suave);
+    text-align: center;
+    height: 100%; /* Garante que os cards tenham a mesma altura */
+    display: flex; /* Ativa o Flexbox para alinhamento interno */
+    flex-direction: column; /* Organiza os itens em coluna */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adiciona transição suave */
+}
+
+/* Adiciona mais espaço abaixo do título dentro dos cards de ajuda */
+#ajudar h3 {
+    margin-bottom: var(--space-md);
+}
+
+/* Efeito de hover para os cards da seção 'ajudar' */
+#ajudar .col-md-6:hover > div {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+#ajudar a {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-weight: 700;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Agrupador do rodapé do card que é empurrado para baixo */
+.card-footer {
+    padding-top: var(--space-md); /* Adiciona espaço acima do conteúdo do rodapé */
+    margin-top: auto; /* Mágica do Flexbox: empurra o elemento para o final do contêiner flexível */
+}
+
+#ajudar a:hover {
+    background-color: var(--cor-primaria-escura);
+    transform: translateY(-3px);
+    color: var(--cor-branco);
+}
+
+#ajudar #doacoes {
+    /* Destaque visual para o card de doação */
+    border-top: 4px solid var(--cor-secundaria);
+}
+
+#ajudar #doacoes img {
+    width: 140px; /* Reduz o tamanho do QR Code para diminuir a altura do card */
+    margin: var(--space-sm) auto;
+}
+
+/* Feedback de cópia da chave PIX */
+#copy-feedback {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    display: inline-block; /* Permite aplicar margem */
+}
+
+/* Estilos para o container da chave PIX */
+.pix-key-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs); 
+    margin-bottom: var(--space-sm);
+}
+
+.pix-key-container input {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: var(--space-xs);
+    text-align: center;
+    color: var(--cor-texto);
+    flex-grow: 1;
+    max-width: 250px;
+}
+
+.pix-key-container button {
+    background-color: var(--cor-secundaria);
+    border: none;
+    border-radius: 4px;
+    padding: var(--space-xs);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pix-key-container button:hover {
+    background-color: var(--cor-primaria);
+}
+
+.pix-key-container button img {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+/* ------------------- */
+/* PÁGINA CADASTRO (cadastro.html) */
+/* ------------------- */
+
+#cadastro {
+    padding-top: 0;
+}
+
+.cadastro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#cadastro-form {
+    padding: var(--space-xl);
+    box-shadow: var(--sombra-suave);
+}
+
+#success-message {
+    text-align: center;
+    padding: var(--space-xxl) var(--space-md);
+    display: none; /* Controlado via JS */
+}
+
+#cadastro-form fieldset {
+    border: none;
+    margin-bottom: var(--space-md);
+}
+
+#cadastro-form legend {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--cor-primaria);
+    margin-bottom: var(--space-md);
+    border-bottom: 2px solid var(--cor-secundaria);
+    width: 100%;
+    padding-bottom: var(--space-xs);
+}
+
+#cadastro-form label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+}
+
+#cadastro-form input, #cadastro-form select {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cadastro-form button {
+    width: 100%;
+    padding: var(--space-sm);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cadastro-form button:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+/* ------------------- */
+/* SISTEMA DE GRID     */
+/* ------------------- */
+
+.container {
+    width: 100%;
+    padding-right: var(--space-sm);
+    padding-left: var(--space-sm);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-0.5 * var(--space-md));
+    margin-left: calc(-0.5 * var(--space-md));
+    align-items: stretch; /* Garante que as colunas na mesma linha tenham a mesma altura */
+}
+
+.row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(0.5 * var(--space-md));
+    padding-left: calc(0.5 * var(--space-md));
+    margin-top: var(--space-sm);
+}
+
+/* Ajuste para linhas dentro de formulários, para que os campos fiquem alinhados */
+.row-form > * {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+/* Gera colunas de 1 a 12 */
+.col-1 { flex: 0 0 auto; width: 8.333333%; }
+.col-2 { flex: 0 0 auto; width: 16.666667%; }
+.col-3 { flex: 0 0 auto; width: 25%; }
+.col-4 { flex: 0 0 auto; width: 33.333333%; }
+.col-5 { flex: 0 0 auto; width: 41.666667%; }
+.col-6 { flex: 0 0 auto; width: 50%; }
+.col-7 { flex: 0 0 auto; width: 58.333333%; }
+.col-8 { flex: 0 0 auto; width: 66.666667%; }
+.col-9 { flex: 0 0 auto; width: 75%; }
+.col-10 { flex: 0 0 auto; width: 83.333333%; }
+.col-11 { flex: 0 0 auto; width: 91.666667%; }
+.col-12 { flex: 0 0 auto; width: 100%; }
+
+/* ------------------- */
+/* RESPONSIVIDADE      */
+/* ------------------- */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container { max-width: 540px; }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container { max-width: 720px; }
+
+    header button { display: block; } /* Mostra o botão hambúrguer em tablets */
+
+    h1 { font-size: var(--font-size-xl); }
+    h2 { font-size: var(--font-size-lg); }
+
+    header nav { 
+        display: none; /* Esconde o menu por padrão */
+        position: absolute;
+        width: 100%;
+        top: 100%; /* Posiciona abaixo do header */
+        right: 0;
+        background-color: var(--cor-branco);
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-md) 0;
+        box-shadow: var(--sombra-suave);
+    }
+
+    header nav.active {
+        display: flex; /* Mostra o menu quando ativo */
+    }
+
+    header nav a {
+        margin: var(--space-sm) 0;
+    }
+
+    .col-md-1 { flex: 0 0 auto; width: 8.333333%; }
+    .col-md-2 { flex: 0 0 auto; width: 16.666667%; }
+    .col-md-3 { flex: 0 0 auto; width: 25%; }
+    .col-md-4 { flex: 0 0 auto; width: 33.333333%; }
+    .col-md-5 { flex: 0 0 auto; width: 41.666667%; }
+    .col-md-6 { flex: 0 0 auto; width: 50%; }
+    .col-md-7 { flex: 0 0 auto; width: 58.333333%; }
+    .col-md-8 { flex: 0 0 auto; width: 66.666667%; }
+    .col-md-9 { flex: 0 0 auto; width: 75%; }
+    .col-md-10 { flex: 0 0 auto; width: 83.333333%; }
+    .col-md-11 { flex: 0 0 auto; width: 91.666667%; }
+    .col-md-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container { max-width: 960px; }
+    
+    header button { display: none; } /* Esconde o botão hambúrguer */
+    
+    header nav { 
+        display: flex; /* Mostra a navegação normal */
+        position: static;
+        width: auto;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    header nav a { margin: 0 0 0 var(--space-md); }
+
+    .col-lg-1 { flex: 0 0 auto; width: 8.333333%; }
+    .col-lg-2 { flex: 0 0 auto; width: 16.666667%; }
+    .col-lg-3 { flex: 0 0 auto; width: 25%; }
+    .col-lg-4 { flex: 0 0 auto; width: 33.333333%; }
+    .col-lg-5 { flex: 0 0 auto; width: 41.666667%; }
+    .col-lg-6 { flex: 0 0 auto; width: 50%; }
+    .col-lg-7 { flex: 0 0 auto; width: 58.333333%; }
+    .col-lg-8 { flex: 0 0 auto; width: 66.666667%; }
+    .col-lg-9 { flex: 0 0 auto; width: 75%; }
+    .col-lg-10 { flex: 0 0 auto; width: 83.333333%; }
+    .col-lg-11 { flex: 0 0 auto; width: 91.666667%; }
+    .col-lg-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* Extra Small devices (phones, less than 768px) */
+@media (max-width: 767.98px) {
+    h1 { font-size: var(--font-size-xl); } /* Reduz o h1 em telas pequenas */
+    h2 { font-size: var(--font-size-lg); } /* Reduz o h2 em telas pequenas */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container { max-width: 1140px; }
+
+    .col-xl-1 { flex: 0 0 auto; width: 8.333333%; }
+    .col-xl-2 { flex: 0 0 auto; width: 16.666667%; }
+    .col-xl-3 { flex: 0 0 auto; width: 25%; }
+    .col-xl-4 { flex: 0 0 auto; width: 33.333333%; }
+    .col-xl-5 { flex: 0 0 auto; width: 41.666667%; }
+    .col-xl-6 { flex: 0 0 auto; width: 50%; }
+    .col-xl-7 { flex: 0 0 auto; width: 58.333333%; }
+    .col-xl-8 { flex: 0 0 auto; width: 66.666667%; }
+    .col-xl-9 { flex: 0 0 auto; width: 75%; }
+    .col-xl-10 { flex: 0 0 auto; width: 83.333333%; }
+    .col-xl-11 { flex: 0 0 auto; width: 91.666667%; }
+    .col-xl-12 { flex: 0 0 auto; width: 100%; }
+}
