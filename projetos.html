@@ -85,7 +85,7 @@
                                      loading="lazy">
                             </figure>
                             <div class="project-content">
-                                <h3>Abrigo</h3>
+                                <h3>Abrigos Seguros</h3>
                                 <p>Manutenção de casas de passagem sigilosas para oferecer refúgio imediato a mulheres e seus filhos em risco iminente.</p>
                             </div>
                         </article>
@@ -105,10 +105,12 @@
                     <div class="col-md-6" id="voluntariado">
                         <!-- Nível de título 3 -->
                         <h3>Seja Voluntário(a)</h3>
-                        <p>Sua paixão e suas habilidades são inestimáveis. Buscamos profissionais nas áreas de Direito, Psicologia, Tecnologia, Marketing e Artesanato.</p>
-                        <!-- Agrupador do rodapé do card para alinhamento -->
+                        <div class="card-body">
+                            <p>Sua paixão e suas habilidades são inestimáveis. Buscamos profissionais nas áreas de Direito, Psicologia, Tecnologia, Marketing e Artesanato.</p>
+                        </div>
+                         <!-- Agrupador do rodapé do card para alinhamento -->
                         <div class="card-footer">
-                            <a href="cadastro.html">Quero ser Voluntário</a>
+                            <a href="cadastro.html">Quero ser Voluntário(a)</a>
                         </div>
                     </div>
         
@@ -116,26 +118,28 @@
                     <div class="col-md-6" id="doacoes">
                         <!-- Nível de título 3 -->
                         <h3>Faça uma Doação via PIX</h3>
-                        <p>Sua contribuição financeira é vital para manter nossos abrigos e serviços de apoio ativos.</p>
-        
-                        <!-- QR Code Placeholder (Mockup) -->
-                        <figure>
-                            <img src="imagens/qrcode.png" 
-                                
-                                 alt="QR Code PIX para doação">
-                        </figure>
+                        <div class="card-body">
+                            <p>Sua contribuição financeira é vital para manter nossos abrigos e serviços de apoio ativos.</p>
+            
+                            <!-- QR Code Placeholder (Mockup) -->
+                            <figure>
+                                <img src="imagens/qrcode.png" 
+                                     alt="QR Code PIX para doação">
+                            </figure>
+                        </div>
                         
                         <!-- Agrupador do rodapé do card para alinhamento -->
                         <div class="card-footer">
-                            <p>Ou use a chave PIX (CNPJ):</p>
-                            <div class="pix-key-container">
-                                <input type="text" id="pix-key" value="362.985.321.80/0001-00" readonly>
-                                <button id="copy-pix-btn" title="Copiar chave PIX">
-                                    <img src="imagens/copy-icon.svg" alt="Copiar">
-                                </button>
+                            <button id="show-pix-key-btn">Usar Chave PIX</button>
+                            <div id="pix-key-details" hidden>
+                                <p>Copie a chave PIX (CNPJ):</p>
+                                <div class="pix-key-container">
+                                    <input type="text" id="pix-key" value="362.985.321.80/0001-00" readonly>
+                                    <button id="copy-pix-btn" title="Copiar chave PIX">Copiar</button>
+                                </div>
+                                <span id="copy-feedback" hidden>Copiado!</span>
                             </div>
-                            <span id="copy-feedback" hidden>Copiado!</span>
-                            <p>Toda doação é segura e destinada diretamente aos projetos.</p>
+                            <p class="pix-security-note">Toda doação é segura e destinada diretamente aos projetos.</p>
                         </div>
                     </div>
                 </div>
@@ -150,5 +154,26 @@
         <p>Desenvolvido por Deise Kelly Sanguin</p>
     </footer>
 
+    <!-- CHATBOT -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle-btn" aria-label="Abrir chat de ajuda">
+            <span>Chat</span>
+        </button>
+        <div id="chatbot-window" class="hidden" role="dialog" aria-labelledby="chatbot-header">
+            <div id="chatbot-header">
+                <h3>Assistente Virtual</h3>
+                <button id="chatbot-close-btn" aria-label="Fechar chat">&times;</button>
+            </div>
+            <div id="chatbot-messages">
+                <!-- As mensagens aparecerão aqui -->
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Digite sua dúvida...">
+                <button id="chatbot-send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
 </body>
 </html>

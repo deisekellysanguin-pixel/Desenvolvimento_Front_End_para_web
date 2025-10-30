@@ -66,22 +66,8 @@
                 </div>
 
                 <div class="row">
-                    <!-- Artigo 1: O Que Nos Move -->
-                    <div class="col-lg-4">
-                        <article>
-                            <h3>O Que Nos Move</h3>
-                            <p>Nascemos do desejo de transformar vidas e a nossa missão é erradicar a violência doméstica através de conscientização, educação e, mais importante, fornecendo um porto seguro e recursos práticos para que cada mulher consiga reconstruir sua autonomia e dignidade.</p>
-                        </article>
-                    </div>
-                    <!-- Artigo 2: Visão -->
-                    <div class="col-lg-4">
-                        <article>
-                            <h3>Nossa Visão</h3>
-                            <p>Ser a principal referência no Brasil no combate à violência doméstica, construindo uma sociedade onde todas as mulheres vivam com segurança, respeito e liberdade, livres de qualquer tipo de opressão.</p>
-                        </article>
-                    </div>
-                    <!-- Artigo 3: Valores -->
-                    <div class="col-lg-4">
+                    <!-- Artigo 1: Valores -->
+                    <div class="col-lg-12">
                         <article>
                             <h3>Nossos Valores</h3>
                             <ul>
@@ -90,6 +76,20 @@
                                 <li><strong>Sororidade:</strong> Acreditamos na força da união e do apoio mútuo entre mulheres.</li>
                                 <li><strong>Transformação:</strong> Empoderamos mulheres para que reescrevam suas próprias histórias com autonomia e dignidade.</li>
                             </ul>
+                        </article>
+                    </div>
+                    <!-- Artigo 2: Missão (agora separado e abaixo) -->
+                    <div class="col-lg-12">
+                        <article>
+                            <h3>Nossa Missão</h3>
+                            <p>Nossa missão é erradicar a violência doméstica através de conscientização, educação e, mais importante, fornecendo um porto seguro e recursos práticos para que cada mulher consiga reconstruir sua autonomia e dignidade.</p>
+                        </article>
+                    </div>
+                    <!-- Artigo 3: Visão (agora separado e abaixo da missão) -->
+                    <div class="col-lg-12">
+                        <article>
+                            <h3>Nossa Visão</h3>
+                            <p>Ser a principal referência no Brasil no combate à violência doméstica, construindo uma sociedade onde todas as mulheres vivam com segurança, respeito e liberdade, livres de qualquer tipo de opressão.</p>
                         </article>
                     </div>
                 </div>
@@ -165,5 +165,26 @@
         <p>Desenvolvido por Deise Kelly Sanguin</p>
     </footer>
 
+    <!-- CHATBOT -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle-btn" aria-label="Abrir chat de ajuda">
+            <span>Chat</span>
+        </button>
+        <div id="chatbot-window" class="hidden" role="dialog" aria-labelledby="chatbot-header">
+            <div id="chatbot-header">
+                <h3>Assistente Virtual</h3>
+                <button id="chatbot-close-btn" aria-label="Fechar chat">&times;</button>
+            </div>
+            <div id="chatbot-messages">
+                <!-- As mensagens aparecerão aqui -->
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Digite sua dúvida...">
+                <button id="chatbot-send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
 </body>
 </html>

@@ -2,9 +2,6 @@
 /* RESET E GLOBAIS     */
 /* ------------------- */
 
-/* Importa a fonte 'Montserrat' do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
 :root {
     /* Cores Primárias e de Destaque */
     --cor-primaria: #6A0DAD; /* Roxo principal */
@@ -191,7 +188,7 @@ header nav a {
     font-size: var(--font-size-base);
 }
 
-header button {
+header #btn-mobile {
     display: none; /* Oculto em telas maiores por padrão */
 }
 
@@ -321,35 +318,61 @@ footer p:last-of-type {
     flex-direction: column;
     text-align: center;
     border-top: 4px solid var(--cor-secundaria);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease; /* Transição mais suave */
 }
 
-#quem-somos .col-lg-4:hover article {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+/* Efeito de hover aprimorado para os cards */
+#quem-somos .row > div:hover article {
+    transform: translateY(-8px) scale(1.02); /* Levanta e aumenta de tamanho */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
 /* Ajusta o tamanho do título dentro dos cards da missão */
 #quem-somos article h3 {
     color: var(--cor-secundaria);
     font-size: 1.5rem; /* Um pouco menor para caber melhor no card */
+    transition: color 0.3s ease; /* Adiciona transição para a mudança de cor */
 }
 
 /* Ajusta o texto e a lista dentro dos cards da missão */
 #quem-somos article p, #quem-somos article li {
-    color: #555; /* Um cinza mais suave para o texto */
-    font-size: 0.95rem; /* Levemente menor para um visual mais limpo */
+    color: #555;
+    font-size: 0.95rem;
+    text-align: center; /* Centraliza o texto dos cards */
 }
 
-/* Garante que a lista de valores ou o parágrafo ocupe o espaço restante, alinhando o conteúdo */
-#quem-somos article ul, #quem-somos article p {
-    flex-grow: 1;
+/* Deixa os valores principais (Empatia, Coragem, etc.) com a cor primária */
+#quem-somos article li strong {
+    color: var(--cor-primaria);
+}
+
+/* Estilos para o contêiner do ícone nos cards */
+.card-icon-container {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+    color: var(--cor-primaria);
+}
+
+/* Estilo para a imagem embutida nos cards da seção "Quem Somos" */
+.card-embedded-image {
+    margin-top: var(--space-md); /* Espaço entre o texto e a imagem */
+    width: 100%;
+    height: 150px; /* Altura fixa para a imagem */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+/* Efeito de hover para os ícones */
+#quem-somos article:hover .card-icon {
+    display: inline-block;
+    transform: scale(1.2) rotate(10deg);
+    transition: transform 0.3s ease;
 }
 
 #quem-somos ul {
     list-style: none;
     padding-left: 0;
-    text-align: left; /* Alinha a lista de valores à esquerda para melhor legibilidade */
+    flex-grow: 1; /* Garante que a lista ocupe o espaço vertical disponível */
 }
 
 #quem-somos li {
@@ -377,6 +400,7 @@ footer p:last-of-type {
 /* Garante que os títulos e parágrafos na seção de impacto sejam brancos */
 #impacto h2, #impacto p {
     color: var(--cor-branco);
+    text-align: center;
 }
 
 #impacto-stats {
@@ -488,12 +512,13 @@ footer p:last-of-type {
     display: flex;
     flex-direction: column;
     border-top: 4px solid var(--cor-secundaria);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* Efeito de hover aprimorado para os cards de projeto */
 #projetos article:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    transform: translateY(-8px) scale(1.02);
 }
 
 #projetos article img {
@@ -501,7 +526,14 @@ footer p:last-of-type {
     height: 200px;
     object-fit: cover;
     border-radius: 0;
+    transition: transform 0.4s ease; /* Transição para o efeito de zoom */
 }
+
+/* Efeito de zoom na imagem ao passar o mouse no card */
+#projetos article:hover img {
+    transform: scale(1.1);
+}
+
 
 /* Adiciona um contêiner para o conteúdo de texto para controlar o preenchimento e o alinhamento */
 .project-content {
@@ -511,6 +543,16 @@ footer p:last-of-type {
     display: flex;
     flex-direction: column;
 }
+.project-content h3 {
+    transition: color 0.3s ease;
+}
+
+/* Muda a cor do título do projeto no hover */
+#projetos article:hover .project-content h3 {
+    color: var(--cor-primaria);
+}
+
+
 
 .project-content p {
     flex-grow: 1; /* Empurra o botão (se houver) para baixo */
@@ -529,7 +571,12 @@ footer p:last-of-type {
     height: 100%; /* Garante que os cards tenham a mesma altura */
     display: flex; /* Ativa o Flexbox para alinhamento interno */
     flex-direction: column; /* Organiza os itens em coluna */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adiciona transição suave */
+    transition: transform 0.35s ease, box-shadow 0.35s ease; /* Adiciona transição suave */
+}
+
+/* Faz o corpo do card crescer para ocupar o espaço vertical, empurrando o footer para baixo */
+.card-body {
+    flex-grow: 1;
 }
 
 /* Adiciona mais espaço abaixo do título dentro dos cards de ajuda */
@@ -538,9 +585,14 @@ footer p:last-of-type {
 }
 
 /* Efeito de hover para os cards da seção 'ajudar' */
-#ajudar .col-md-6:hover > div {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+#ajudar .col-md-6 > div:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Muda a cor do título no hover */
+#ajudar .col-md-6 > div:hover h3 {
+    color: var(--cor-primaria);
 }
 
 #ajudar a {
@@ -572,15 +624,18 @@ footer p:last-of-type {
 }
 
 #ajudar #doacoes img {
-    width: 140px; /* Reduz o tamanho do QR Code para diminuir a altura do card */
-    margin: var(--space-sm) auto;
+    width: 120px; /* Reduz ainda mais o tamanho do QR Code */
+    margin: var(--space-xs) auto; /* Diminui o espaçamento vertical em volta do QR Code */
+}
+
+/* Reduz o espaçamento do parágrafo "Ou use a chave PIX" */
+#ajudar #doacoes .card-footer > p:first-of-type {
+    margin-bottom: var(--space-xs);
 }
 
 /* Feedback de cópia da chave PIX */
 #copy-feedback {
     color: var(--cor-primaria);
-    font-weight: 600;
-    display: inline-block; /* Permite aplicar margem */
 }
 
 /* Estilos para o container da chave PIX */
@@ -589,7 +644,7 @@ footer p:last-of-type {
     justify-content: center;
     align-items: center;
     gap: var(--space-xs); 
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs); /* Diminui o espaçamento abaixo da chave PIX */
 }
 
 .pix-key-container input {
@@ -607,23 +662,17 @@ footer p:last-of-type {
 .pix-key-container button {
     background-color: var(--cor-secundaria);
     border: none;
-    border-radius: 4px;
-    padding: var(--space-xs);
+    border-radius: 20px; /* Bordas mais arredondadas */
+    padding: var(--space-xs) var(--space-sm); /* Mais espaço horizontal */
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--cor-branco); /* Cor do texto */
+    font-weight: 600; /* Deixa o texto em negrito */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .pix-key-container button:hover {
     background-color: var(--cor-primaria);
-}
-
-.pix-key-container button img {
-    width: 20px;
-    height: 20px;
-    margin: 0;
 }
 
 /* ------------------- */
@@ -635,12 +684,14 @@ footer p:last-of-type {
 }
 
 .cadastro-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Ocupa toda a largura da coluna */
+    height: 300px; /* Altura fixa para a imagem */
+    object-fit: cover; /* Garante que a imagem não se distorça */
+    margin-bottom: var(--space-lg); /* Espaço entre a imagem e o formulário */
 }
 
 #cadastro-form {
+    background-color: var(--cor-branco);
     padding: var(--space-xl);
     box-shadow: var(--sombra-suave);
 }
@@ -674,10 +725,11 @@ footer p:last-of-type {
 
 #cadastro-form input, #cadastro-form select {
     width: 100%;
-    padding: var(--space-sm);
-    border: 1px solid #ccc;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--cor-borda-suave);
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #cadastro-form button {
@@ -767,32 +819,6 @@ footer p:last-of-type {
 @media (min-width: 768px) {
     .container { max-width: 720px; }
 
-    header button { display: block; } /* Mostra o botão hambúrguer em tablets */
-
-    h1 { font-size: var(--font-size-xl); }
-    h2 { font-size: var(--font-size-lg); }
-
-    header nav { 
-        display: none; /* Esconde o menu por padrão */
-        position: absolute;
-        width: 100%;
-        top: 100%; /* Posiciona abaixo do header */
-        right: 0;
-        background-color: var(--cor-branco);
-        flex-direction: column;
-        align-items: center;
-        padding: var(--space-md) 0;
-        box-shadow: var(--sombra-suave);
-    }
-
-    header nav.active {
-        display: flex; /* Mostra o menu quando ativo */
-    }
-
-    header nav a {
-        margin: var(--space-sm) 0;
-    }
-
     .col-md-1 { flex: 0 0 auto; width: 8.333333%; }
     .col-md-2 { flex: 0 0 auto; width: 16.666667%; }
     .col-md-3 { flex: 0 0 auto; width: 25%; }
@@ -810,11 +836,10 @@ footer p:last-of-type {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .container { max-width: 960px; }
-    
-    header button { display: none; } /* Esconde o botão hambúrguer */
-    
+
+    header #btn-mobile { display: none; } /* Hidden on desktops */
     header nav { 
-        display: flex; /* Mostra a navegação normal */
+        display: flex; /* Shown on desktops */
         position: static;
         width: auto;
         flex-direction: row;
@@ -822,9 +847,7 @@ footer p:last-of-type {
         box-shadow: none;
         padding: 0;
     }
-
     header nav a { margin: 0 0 0 var(--space-md); }
-
     .col-lg-1 { flex: 0 0 auto; width: 8.333333%; }
     .col-lg-2 { flex: 0 0 auto; width: 16.666667%; }
     .col-lg-3 { flex: 0 0 auto; width: 25%; }
@@ -837,12 +860,6 @@ footer p:last-of-type {
     .col-lg-10 { flex: 0 0 auto; width: 83.333333%; }
     .col-lg-11 { flex: 0 0 auto; width: 91.666667%; }
     .col-lg-12 { flex: 0 0 auto; width: 100%; }
-}
-
-/* Extra Small devices (phones, less than 768px) */
-@media (max-width: 767.98px) {
-    h1 { font-size: var(--font-size-xl); } /* Reduz o h1 em telas pequenas */
-    h2 { font-size: var(--font-size-lg); } /* Reduz o h2 em telas pequenas */
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -861,4 +878,180 @@ footer p:last-of-type {
     .col-xl-10 { flex: 0 0 auto; width: 83.333333%; }
     .col-xl-11 { flex: 0 0 auto; width: 91.666667%; }
     .col-xl-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* ------------------- */
+/* CHATBOT             */
+/* ------------------- */
+
+#chatbot-container {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    z-index: 1001; /* Acima do header */
+}
+
+#chatbot-toggle-btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 30px; /* Transforma em pílula */
+    width: auto; /* Largura automática */
+    height: 60px;
+    padding: 0 var(--space-md); /* Espaçamento interno horizontal */
+    box-shadow: var(--sombra-suave);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs); /* Espaço entre o ícone e o texto */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Classe para esconder o botão do chat quando a janela está aberta */
+#chatbot-toggle-btn.hidden {
+    display: none;
+}
+
+#chatbot-toggle-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--cor-primaria-escura);
+}
+
+#chatbot-toggle-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+#chatbot-toggle-btn span {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+}
+
+#chatbot-window {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    width: 350px;
+    max-width: calc(100vw - 32px); /* Garante que não toque as bordas da tela */
+    height: 450px;
+    max-height: 70vh;
+    background-color: var(--cor-branco);
+    border-radius: 8px;
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#chatbot-window.hidden {
+    transform: scale(0);
+    transform-origin: bottom right; /* Garante que a animação comece do canto certo */
+    opacity: 0;
+    pointer-events: none;
+}
+
+#chatbot-header {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: var(--space-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-header h3 {
+    font-size: 0.95rem; /* Levemente menor */
+    margin: 0;
+    color: var(--cor-branco);
+}
+
+#chatbot-close-btn {
+    background: none;
+    border: none;
+    color: var(--cor-branco);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#chatbot-messages {
+    flex-grow: 1;
+    padding: var(--space-sm);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.chat-message {
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 12px;
+    max-width: 80%;
+    white-space: pre-line; /* Garante que as quebras de linha (\n) sejam renderizadas */
+    font-size: 0.9rem; /* Fonte menor para as mensagens */
+}
+
+.bot-message {
+    background-color: #f1f0f0;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    align-self: flex-end;
+}
+
+#chatbot-input-container {
+    display: flex;
+    padding: var(--space-sm);
+    border-top: 1px solid var(--cor-borda-suave);
+}
+
+#chatbot-input {
+    flex-grow: 1;
+    border: 1px solid var(--cor-borda-suave);
+    border-radius: 20px;
+    padding: var(--space-xs) var(--space-sm);
+    margin-right: var(--space-xs);
+    font-size: 0.9rem; /* Fonte menor para o input */
+}
+
+#chatbot-send-btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 20px;
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.9rem; /* Fonte menor para o botão */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#chatbot-send-btn:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+/* ------------------- */
+/* VALIDAÇÃO DE FORMULÁRIO */
+/* ------------------- */
+
+/* Estilo para campos de formulário que são inválidos DEPOIS que o usuário interagiu com eles.
+   O seletor :not(:placeholder-shown) garante que o estilo só se aplique se o campo não estiver vazio. */
+#cadastro-form input:not(:placeholder-shown):invalid {
+    border-color: #dc3545; /* Vermelho para indicar erro */
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Sombra suave vermelha */
+}
+
+/* Estilo para campos de formulário que são válidos DEPOIS que o usuário interagiu com eles */
+#cadastro-form input:not(:placeholder-shown):valid {
+    border-color: #28a745; /* Verde para indicar sucesso */
+}
+
+/* Remove a sombra de foco padrão para não conflitar com a nossa e melhora a transição */
+#cadastro-form input:focus {
+    box-shadow: none;
+    border-color: var(--cor-primaria);
 }

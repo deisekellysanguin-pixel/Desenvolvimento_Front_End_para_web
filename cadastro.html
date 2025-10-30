@@ -46,20 +46,17 @@
                     </p>
                 </div>
                 
-                <div class="row justify-content-center">
-                    <div class="col-lg-5">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
                         <!-- Imagem de Destaque -->
                         <figure class="cadastro-image">
                             <img src="imagens/unidas.jpg"
                                  alt="Mãos de diversas pessoas unidas, simbolizando apoio e colaboração." 
                                  loading="lazy">
-                            <figcaption>Comunidade unida contra a violência.</figcaption>
                         </figure>
-                    </div>
-                    <div class="col-lg-7">
+
                         <!-- FORMULÁRIO SEMÂNTICO E COMPLEXO -->
                         <form id="cadastro-form" action="#" method="POST">
-                            
                             <!-- AGRUPAMENTO LÓGICO 1: Dados Pessoais -->
                             <fieldset>
                                 <!-- Legenda do Grupo -->
@@ -81,7 +78,7 @@
                                     <!-- CPF (Com Validação de Padrão) -->
                                     <div class="col-md-6">
                                         <label for="cpf">CPF</label>
-                                        <input type="text" id="cpf" name="cpf" placeholder="999.999.999-99" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="14">
+                                        <input type="text" id="cpf" name="cpf" placeholder="999.999.999-99" required pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" maxlength="14">
                                     </div>
                 
                                     <!-- Telefone (Com Validação de Padrão) -->
@@ -97,22 +94,27 @@
                                     </div>
                                 </div>
                             </fieldset>
-            
+
                             <!-- AGRUPAMENTO LÓGICO 2: Endereço -->
                             <fieldset>
                                 <!-- Legenda do Grupo -->
                                 <legend>2. Endereço</legend>
                                 <div class="row row-form">
+                                    <!-- Endereço -->
+                                    <div class="col-md-6">
+                                        <label for="endereco">Rua, Número</label>
+                                        <input type="text" id="endereco" name="endereco" placeholder="Rua Exemplo, 123" required>
+                                    </div>
                                     <!-- CEP (Com Validação de Padrão) -->
                                     <div class="col-md-6">
                                         <label for="cep">CEP</label>
-                                        <input type="text" id="cep" name="cep" placeholder="99999-999" required pattern="\d{5}-\d{3}" maxlength="9">
+                                        <input type="text" id="cep" name="cep" placeholder="99999-999" required maxlength="9">
                                     </div>
                                     <!-- Estado (Tipo Select) -->
                                     <div class="col-md-6">
                                         <label for="estado">Estado</label>
                                         <select id="estado" name="estado" required>
-                                            <option value="" disabled selected>Selecione um estado</option>
+                                            <option value="" disabled selected>Selecione um Estado</option>
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
                                             <option value="AP">Amapá</option>
@@ -147,11 +149,6 @@
                                         <label for="cidade">Cidade</label>
                                         <input type="text" id="cidade" name="cidade" placeholder="São Paulo" required>
                                     </div>
-                                    <!-- Endereço -->
-                                    <div class="col-md-6">
-                                        <label for="endereco">Endereço (Rua, Número)</label>
-                                        <input type="text" id="endereco" name="endereco" placeholder="Rua Exemplo, 123" required>
-                                    </div>
                                 </div>
                             </fieldset>
             
@@ -183,61 +180,27 @@
         <p>Desenvolvido por Deise Kelly Sanguin</p>
     </footer>
 
-    <!-- Script para funcionalidade do formulário e menu mobile -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Funcionalidade do formulário de cadastro
-            const form = document.getElementById('cadastro-form');
-            const successMessage = document.getElementById('success-message');
-            const formSection = document.querySelector('#cadastro .container');
+    <!-- CHATBOT -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle-btn" aria-label="Abrir chat de ajuda">
+            <span>Chat</span>
+        </button>
+        <div id="chatbot-window" class="hidden" role="dialog" aria-labelledby="chatbot-header">
+            <div id="chatbot-header">
+                <h3>Assistente Virtual</h3>
+                <button id="chatbot-close-btn" aria-label="Fechar chat">&times;</button>
+            </div>
+            <div id="chatbot-messages">
+                <!-- As mensagens aparecerão aqui -->
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Digite sua dúvida...">
+                <button id="chatbot-send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
 
-            if (form) {
-                form.addEventListener('submit', (event) => {
-                    event.preventDefault(); // Impede o envio padrão do formulário
-
-                    // Esconde a seção do formulário
-                    if (formSection) {
-                        formSection.style.display = 'none';
-                    }
-
-                    // Mostra a mensagem de sucesso
-                    successMessage.hidden = false;
-                });
-            }
-
-            // Máscara para o campo de CPF (###.###.###-##)
-            const cpfInput = document.getElementById('cpf');
-            if (cpfInput) {
-                cpfInput.addEventListener('input', (event) => {
-                    let value = event.target.value.replace(/\D/g, '');
-                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
-                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
-                    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-                    event.target.value = value;
-                });
-            }
-
-            // Máscara para o campo de Telefone ((##) #####-####)
-            const telefoneInput = document.getElementById('telefone');
-            if (telefoneInput) {
-                telefoneInput.addEventListener('input', (event) => {
-                    let value = event.target.value.replace(/\D/g, '');
-                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-                    value = value.replace(/(\d{5})(\d{4})$/, '$1-$2');
-                    event.target.value = value;
-                });
-            }
-
-            // Máscara para o campo de CEP (#####-###)
-            const cepInput = document.getElementById('cep');
-            if (cepInput) {
-                cepInput.addEventListener('input', (event) => {
-                    let value = event.target.value.replace(/\D/g, '');
-                    value = value.replace(/^(\d{5})(\d)/, '$1-$2');
-                    event.target.value = value;
-                });
-            }
-        });
-    </script>
+    <!-- Script para as funcionalidades da página -->
+    <script src="js/main.js" defer></script>
 </body>
 </html>
