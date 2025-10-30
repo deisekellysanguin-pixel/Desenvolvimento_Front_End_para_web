@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para a fonte do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link para a folha de estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <title>Mulheres + Fortes - Juntas Contra a Violência Doméstica</title>
 </head>
 <body>
 
-    <!-- CABEÇALHO SEMÂNTICO: Navegação principal e logotipo -->
+    <!-- CABEÇALHO SEMÂNTICO: Navegação principal -->
     <header>
-        <img src="imagens/logo.svg" alt="Logotipo Mulheres + Fortes" class="logo-img">
+        <a href="index.html" aria-label="Página Inicial - Mulheres + Fortes">
+            <div class="logo-text">Mulheres <span>+</span> Fortes</div>
+        </a>
         
-        <!-- Agrupador para navegação e botão do menu -->
-        <div>
-            <!-- Botão do Menu Hambúrguer (para telas menores) -->
-            <button aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
-                <!-- O ícone do menu (três linhas) será adicionado com CSS -->
-            </button>
-            <!-- Navegação Principal -->
-            <nav id="menu-principal" aria-label="Navegação Principal">
-                <a href="index.html">Início</a>
-                <a href="projetos.html">Projetos</a>
-                <a href="cadastro.html">Quero Ajudar</a>
-            </nav>
+        <!-- Controles de Tema (Centralizado no Header) -->
+        <div class="theme-controls">
+            <button id="theme-toggle-dark" aria-label="Ativar modo escuro">◐</button>
         </div>
+        
+        <!-- Botão do Menu Hambúrguer (para telas menores) -->
+        <button id="btn-mobile" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
+            <span class="hamburger"></span>
+        </button>
+        <!-- Navegação Principal -->
+        <nav id="menu-principal" aria-label="Navegação Principal">
+            <a href="index.html">Início</a>
+            <a href="projetos.html">Projetos</a>
+            <a href="cadastro.html">Quero Ajudar</a>
+        </nav>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL SEMÂNTICO -->
@@ -32,10 +42,10 @@
         <section id="hero">
             <!-- Nível de título 1 (principal) -->
             <h1>
-                Juntas, Somos a Força Que Nenhuma Violência Pode Quebrar.
+                Juntas, Somos a Força Que Nenhuma Violência Pode Quebrar!
             </h1>
             <p>
-                A "Mulheres + Fortes" oferece apoio integral, jurídico e psicológico para mulheres que enfrentam a violência doméstica. Você não está sozinha.
+                A "Mulheres + Fortes" oferece apoio integral, jurídico e psicológico para mulheres que enfrentam a violência doméstica. Você não está sozinha!
             </p>
             <a href="#contato">
                 Fale Conosco
@@ -45,46 +55,50 @@
         <!-- SEÇÃO QUEM SOMOS E MISSÃO -->
         <section id="quem-somos">
             <!-- Nível de título 2 -->
-            <h2>Nossa Missão</h2>
-            
-            <!-- Artigo 1: Missão -->
-            <article>
-                <!-- Nível de título 3 -->
-                <h3>O Que Nos Move</h3>
-                <p>
-                    Nascemos do desejo de transformar vidas. Nossa missão é erradicar a violência doméstica através de conscientização, educação e, mais importante, fornecendo um porto seguro e recursos práticos para que cada mulher consiga reconstruir sua autonomia e dignidade.
-                </p>
-            </article>
-            
-            <!-- Artigo 2: Visão -->
-            <article>
-                <!-- Nível de título 3 -->
-                <h3>Nossa Visão</h3>
-                <p>
-                    Ser a principal referência no Brasil no combate à violência doméstica, construindo uma sociedade onde todas as mulheres vivam com segurança, respeito e liberdade, livres de qualquer tipo de opressão.
-                </p>
-            </article>
+            <div class="container">
+                <h2>Nosso Propósito</h2>
+                <p class="section-subtitle">A "Mulheres + Fortes" oferece apoio integral, jurídico e psicológico para mulheres que enfrentam a violência doméstica. Você não está sozinha.</p>
+                <div class="row justify-content-center">
+                    <!-- Imagem relacionada à Missão -->
+                    <div class="col-lg-8">
+                        <figure class="quem-somos-image">
+                            <img src="imagens/mulheres.jpg" 
+                                 alt="Um grupo de mulheres de diversas etnias e idades, vestindo camisetas cor-de-rosa, unindo as mãos em um gesto de apoio e solidariedade." 
+                                 loading="lazy">
+                            <figcaption>Comunidade, Força e Solidariedade!</figcaption>
+                        </figure>
+                    </div>
+                </div>
 
-            <!-- Artigo 3: Valores -->
-            <article>
-                <!-- Nível de título 3 -->
-                <h3>Nossos Valores</h3>
-                <ul>
-                    <li><strong>Empatia:</strong> Acolhemos cada história com respeito e sem julgamentos.</li>
-                    <li><strong>Coragem:</strong> Lutamos incansavelmente pelos direitos e pela segurança das mulheres.</li>
-                    <li><strong>Sororidade:</strong> Acreditamos na força da união e do apoio mútuo entre mulheres.</li>
-                    <li><strong>Transformação:</strong> Empoderamos mulheres para que reescrevam suas próprias histórias com autonomia e dignidade.</li>
-                </ul>
-            </article>
-            
-            <!-- Imagem relacionada à Missão -->
-            <figure>
-                <img src="imagens/mulheres.jpg" 
-                     alt="Um grupo de mulheres de diversas etnias e idades, vestindo camisetas cor-de-rosa, unindo as mãos em um gesto de apoio e solidariedade." 
-                     loading="lazy">
-                <!-- Nível de título 6 (legenda) -->
-                <figcaption>Comunidade, Força e Solidariedade</figcaption>
-            </figure>
+                <div class="row">
+                    <!-- Artigo 1: Valores -->
+                    <div class="col-lg-12">
+                        <article>
+                            <h3>Nossos Valores</h3>
+                            <ul>
+                                <li><strong>Empatia:</strong> Acolhemos cada história com respeito e sem julgamentos.</li>
+                                <li><strong>Coragem:</strong> Lutamos incansavelmente pelos direitos e pela segurança das mulheres.</li>
+                                <li><strong>Sororidade:</strong> Acreditamos na força da união e do apoio mútuo entre mulheres.</li>
+                                <li><strong>Transformação:</strong> Empoderamos mulheres para que reescrevam suas próprias histórias com autonomia e dignidade.</li>
+                            </ul>
+                        </article>
+                    </div>
+                    <!-- Artigo 2: Missão (agora separado e abaixo) -->
+                    <div class="col-lg-12">
+                        <article>
+                            <h3>Nossa Missão</h3>
+                            <p>Nossa missão é erradicar a violência doméstica através de conscientização, educação e, mais importante, fornecendo um porto seguro e recursos práticos para que cada mulher consiga reconstruir sua autonomia e dignidade.</p>
+                        </article>
+                    </div>
+                    <!-- Artigo 3: Visão (agora separado e abaixo da missão) -->
+                    <div class="col-lg-12">
+                        <article>
+                            <h3>Nossa Visão</h3>
+                            <p>Ser a principal referência no Brasil no combate à violência doméstica, construindo uma sociedade onde todas as mulheres vivam com segurança, respeito e liberdade, livres de qualquer tipo de opressão.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- SEÇÃO ESTATÍSTICAS E CHAMADA DE AÇÃO -->
@@ -92,66 +106,90 @@
             <!-- Nível de título 2 -->
             <h2>Nosso Impacto em Números</h2>
             <p>Cada ajuda faz uma diferença real na vida de uma sobrevivente.</p>
-            
-            <div>
-                 <!-- Nível de título 3 -->
-                <h3>500+</h3>
-                <p>Atendimentos Psicológicos</p>
-            </div>
-            <div>
-                 <!-- Nível de título 3 -->
-                <h3>80+</h3>
-                <p>Processos Jurídicos Abertos</p>
-            </div>
-            <div>
-                 <!-- Nível de título 3 -->
-                <h3>20</h3>
-                <p>Abrigos Seguros</p>
+            <div class="container">
+                <div class="row" id="impacto-stats">
+                    <div class="col-md-4 stat-card">
+                         <!-- Nível de título 3 -->
+                        <h3>500+</h3>
+                        <p>Atendimentos Psicológicos</p>
+                    </div>
+                    <div class="col-md-4 stat-card">
+                         <!-- Nível de título 3 -->
+                        <h3>80+</h3>
+                        <p>Processos Jurídicos Abertos</p>
+                    </div>
+                    <div class="col-md-4 stat-card">
+                         <!-- Nível de título 3 -->
+                        <h3>20+</h3>
+                        <p>Abrigos Seguros</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- SEÇÃO CONTATO -->
         <section id="contato">
-            <!-- Nível de título 2 -->
-            <h2>Entre em Contato</h2>
-            
-            <div>
-                <!-- Nível de título 3 -->
-                <h3>Informações de Contato</h3>
-                <address>
-                    <p><strong>E-mail:</strong> contato@mulheresfortes.org.br</p>
-                    <p><strong>Telefone:</strong> (11) 98765-4321</p>
-                    <p><strong>Horário de Atendimento:</strong> Segunda a Sexta, das 9h às 18h</p>
-                </address>
+            <div class="contato-header">
+                <!-- Nível de título 2 -->
+                <h2>Entre em Contato</h2>
             </div>
-            <div>
-                <!-- Nível de título 3 -->
-                <h3>Sede Administrativa</h3>
-                <p>Rua da Solidariedade, 123</p>
-                <p>Centro - São Paulo, SP</p>
-            </div>
-             <div>
-                <!-- Nível de título 3 -->
-                <h3>Canais de Ajuda Urgente</h3>
-                <a href="tel:180">
-                    Ligue 180
-                </a>
-                <p>Central de Atendimento à Mulher</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 contact-card">
+                        <!-- Nível de título 3 -->
+                        <h3>Informações de Contato</h3>
+                        <address>
+                            <p><strong>E-mail:</strong> contato@mulheresfortes.org.br</p>
+                            <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                            <p><strong>Atendimento:</strong> Seg a Sex, 9h - 18h</p>
+                        </address>
+                    </div>
+                    <div class="col-lg-4 col-md-6 contact-card">
+                        <!-- Nível de título 3 -->
+                        <h3>Sede Administrativa</h3>
+                        <p>Rua da Solidariedade, 123</p>
+                        <p>Centro - São Paulo, SP</p>
+                    </div>
+                     <div class="col-lg-4 col-md-12 contact-card urgent-help">
+                        <!-- Nível de título 3 -->
+                        <h3>Canais de Ajuda Urgente</h3>
+                        <a href="tel:180">
+                            <span class="phone-icon">📞</span> Ligue 180
+                        </a>
+                        <p>Central de Atendimento à Mulher</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- RODAPÉ SEMÂNTICO -->
     <footer>
-        <!-- Nível de título 3 -->
-        <h3>Mulheres + Fortes</h3>
         <p>&copy; 2025 Todos os direitos reservados. Construindo um futuro livre de violência!</p>
         <!-- Crédito da Desenvolvedora -->
         <p>Desenvolvido por Deise Kelly Sanguin</p>
-        <nav>
-            <a href="index.html">Início</a> | <a href="projetos.html">Projetos</a> | <a href="cadastro.html">Quero Ajudar</a>
-        </nav>
     </footer>
 
+    <!-- CHATBOT -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle-btn" aria-label="Abrir chat de ajuda">
+            <span>Chat</span>
+        </button>
+        <div id="chatbot-window" class="hidden" role="dialog" aria-labelledby="chatbot-header">
+            <div id="chatbot-header">
+                <h3>Assistente Virtual</h3>
+                <button id="chatbot-close-btn" aria-label="Fechar chat">&times;</button>
+            </div>
+            <div id="chatbot-messages" aria-live="polite" aria-atomic="false">
+                <!-- As mensagens aparecerão aqui -->
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Digite sua dúvida...">
+                <button id="chatbot-send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
 </body>
 </html>

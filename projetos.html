@@ -3,79 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para a fonte do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link para a folha de estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <title>Projetos Sociais | Mulheres + Fortes</title>
 </head>
 <body>
 
     <!-- CABEÇALHO SEMÂNTICO: Navegação principal -->
     <header>
-        <img src="imagens/logo.svg" alt="Logotipo Mulheres + Fortes" class="logo-img">
+        <a href="index.html" aria-label="Página Inicial - Mulheres + Fortes">
+            <div class="logo-text">Mulheres <span>+</span> Fortes</div>
+        </a>
 
-        <!-- Agrupador para navegação e botão do menu -->
-        <div>
-            <!-- Botão do Menu Hambúrguer (para telas menores) -->
-            <button aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
-                <!-- O ícone do menu (três linhas) será adicionado com CSS -->
-            </button>
-            <!-- Navegação Principal -->
-            <nav id="menu-principal" aria-label="Navegação Principal">
-                <a href="index.html">Início</a>
-                <a href="projetos.html">Projetos</a>
-                <a href="cadastro.html">Quero Ajudar</a>
-            </nav>
+        <!-- Controles de Tema (Centralizado no Header) -->
+        <div class="theme-controls">
+            <button id="theme-toggle-dark" aria-label="Ativar modo escuro">◐</button>
         </div>
+        
+        <!-- Botão do Menu Hambúrguer (para telas menores) -->
+        <button id="btn-mobile" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
+            <span class="hamburger"></span>
+        </button>
+        <!-- Navegação Principal -->
+        <nav id="menu-principal" aria-label="Navegação Principal">
+            <a href="index.html">Início</a>
+            <a href="projetos.html">Projetos</a>
+            <a href="cadastro.html">Quero Ajudar</a>
+        </nav>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL SEMÂNTICO -->
     <main>
-        <!-- Título Principal da Página -->
-        <h1>
-            Nossos Projetos e Iniciativas
-        </h1>
+        <div class="container">
+            <div class="page-header">
+                <!-- Título Principal da Página -->
+                <h1>Nossos Projetos e Iniciativas</h1>
+                <!-- Nível de título 2 -->
+                <h2>Conheça as Nossas Ações</h2>
+            </div>
+        </div>
         
         <!-- SEÇÃO PROJETOS EM ANDAMENTO -->
         <section id="projetos">
-            <!-- Nível de título 2 -->
-            <h2>Conheça as Nossas Ações</h2>
-            
-            <!-- Artigo do Projeto 1 (Contém Imagem) -->
-            <article>
-                <figure>
-                    <img src="imagens/escola.jpg" 
-                         alt="Mulheres em um curso de capacitação profissional, aprendendo novas habilidades." 
-                         loading="lazy">
-                    <figcaption>Mulheres em um curso de capacitação profissional.</figcaption>
-                </figure>
-                <!-- Nível de título 3 -->
-                <h3>Escola da Autonomia</h3>
-                <p>Oferecemos cursos de capacitação profissional e educação financeira para que as sobreviventes alcancem a independência econômica.</p>
-            </article>
-
-            <!-- Artigo do Projeto 2 (Contém Imagem) -->
-            <article>
-                <figure>
-                    <img src="imagens/acolhimento.jpg" 
-                         alt="Uma profissional oferecendo uma sessão de aconselhamento e apoio jurídico em um ambiente seguro." 
-                         loading="lazy">
-                    <figcaption>Uma profissional oferecendo uma sessão de aconselhamento e apoio jurídico em um ambiente seguro.</figcaption>
-                </figure>
-                <!-- Nível de título 3 -->
-                <h3>Rede de Acolhimento</h3>
-                <p>Serviço de plantão com psicólogos e advogados especializados em violência de gênero, garantindo suporte imediato e sigiloso.</p>
-            </article>
-
-            <!-- Artigo do Projeto 3 (Contém Imagem) -->
-            <article>
-                <figure>
-                    <img src="imagens/abrigo.jpeg" 
-                         alt="Fachada de uma casa segura que serve como abrigo para mulheres e crianças." 
-                         loading="lazy">
-                    <figcaption>Segurança e um novo lar para as famílias em nosso abrigo.</figcaption>
-                </figure>
-                <!-- Nível de título 3 -->
-                <h3>Abrigo</h3>
-                <p>Manutenção de casas de passagem sigilosas para oferecer refúgio imediato a mulheres e seus filhos em risco iminente.</p>
-            </article>
+            <div class="container">
+                <!-- Título acessível para a seção -->
+                <h2 class="sr-only">Projetos em Andamento</h2>
+                <div class="row">
+                    <!-- Artigo do Projeto 1 (Contém Imagem) -->
+                    <div class="col-lg-4 col-md-6">
+                        <article>
+                            <figure>
+                                <img src="imagens/escola.jpg" 
+                                     alt="Mulheres em um curso de capacitação profissional, aprendendo novas habilidades." 
+                                     loading="lazy">
+                            </figure>
+                            <div class="project-content">
+                                <h3>Escola da Autonomia</h3>
+                                <p>Oferecemos cursos de capacitação profissional e educação financeira para que as sobreviventes alcancem a independência econômica.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Artigo do Projeto 2 (Contém Imagem) -->
+                    <div class="col-lg-4 col-md-6">
+                        <article>
+                            <figure>
+                                <img src="imagens/acolhimento.jpg" 
+                                     alt="Uma profissional oferecendo uma sessão de aconselhamento e apoio jurídico em um ambiente seguro." 
+                                     loading="lazy">
+                            </figure>
+                            <div class="project-content">
+                                <h3>Rede de Acolhimento</h3>
+                                <p>Serviço de plantão com psicólogos e advogados especializados em violência de gênero, garantindo suporte imediato e sigiloso.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Artigo do Projeto 3 (Contém Imagem) -->
+                    <div class="col-lg-4 col-md-6">
+                        <article>
+                            <figure>
+                                <img src="imagens/abrigo.jpeg" 
+                                     alt="Fachada de uma casa segura que serve como abrigo para mulheres e crianças." 
+                                     loading="lazy">
+                            </figure>
+                            <div class="project-content">
+                                <h3>Abrigos Seguros</h3>
+                                <p>Manutenção de casas de passagem sigilosas para oferecer refúgio imediato a mulheres e seus filhos em risco iminente.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- SEÇÃO COMO AJUDAR: VOLUNTARIADO E DOAÇÃO (AGORA COM PIX) -->
@@ -83,49 +104,81 @@
             <!-- Nível de título 2 -->
             <h2>Una-se à Nossa Causa</h2>
 
-            <!-- Seção de Voluntariado -->
-            <div id="voluntariado">
-                <!-- Nível de título 3 -->
-                <h3>Seja Voluntário(a)</h3>
-                <p>Sua paixão e suas habilidades são inestimáveis. Buscamos profissionais nas áreas de Direito, Psicologia, Tecnologia, Marketing e Artesanato.</p>
-                
-                <a href="cadastro.html">
-                    Quero ser Voluntário
-                </a>
-            </div>
-
-            <!-- Seção de Doações PIX -->
-            <div id="doacoes">
-                <!-- Nível de título 3 -->
-                <h3>Faça uma Doação via PIX</h3>
-                <p>Sua contribuição financeira é vital para manter nossos abrigos e serviços de apoio ativos.</p>
-
-                <!-- QR Code Placeholder (Mockup) -->
-                <figure>
-                    <img src="imagens/qrcode.png" 
-                         alt="QR Code PIX para doação">
-                </figure>
-                
-                <p>Chave PIX (CNPJ - 362.985.321-80):</p>
-                <div>
-                    <span id="pix-key">362.985.321.80/0001-00</span>
+            <div class="container">
+                <div class="row">
+                    <!-- Seção de Voluntariado -->
+                    <div class="col-md-6" id="voluntariado">
+                        <!-- Nível de título 3 -->
+                        <h3>Seja Voluntário(a)</h3>
+                        <div class="card-body">
+                            <p>Sua paixão e suas habilidades são inestimáveis. Buscamos profissionais nas áreas de Direito, Psicologia, Tecnologia, Marketing e Artesanato.</p>
+                        </div>
+                         <!-- Agrupador do rodapé do card para alinhamento -->
+                        <div class="card-footer">
+                            <a href="cadastro.html">Quero ser Voluntário(a)</a>
+                        </div>
+                    </div>
+        
+                    <!-- Seção de Doações PIX -->
+                    <div class="col-md-6" id="doacoes">
+                        <!-- Nível de título 3 -->
+                        <h3>Faça uma Doação via PIX</h3>
+                        <div class="card-body">
+                            <p>Sua contribuição financeira é vital para manter nossos abrigos e serviços de apoio ativos.</p>
+            
+                            <!-- QR Code Placeholder (Mockup) -->
+                            <figure>
+                                <img src="imagens/qrcode.png" 
+                                     alt="QR Code PIX para doação">
+                            </figure>
+                        </div>
+                        
+                        <!-- Agrupador do rodapé do card para alinhamento -->
+                        <div class="card-footer">
+                            <button id="show-pix-key-btn">Usar Chave PIX</button>
+                            <div id="pix-key-details" hidden>
+                                <p>Copie a chave PIX (CNPJ):</p>
+                                <div class="pix-key-container">
+                                    <input type="text" id="pix-key" value="362.985.321.80/0001-00" readonly>
+                                    <button id="copy-pix-btn" title="Copiar chave PIX">Copiar</button>
+                                </div>
+                                <span id="copy-feedback" hidden>Copiado!</span>
+                            </div>
+                            <p class="pix-security-note">Toda doação é segura e destinada diretamente aos projetos.</p>
+                        </div>
+                    </div>
                 </div>
-                <p>Toda doação é segura e destinada diretamente aos projetos.</p>
             </div>
         </section>
     </main>
 
     <!-- RODAPÉ SEMÂNTICO -->
     <footer>
-        <!-- Nível de título 4 (sub-título no rodapé) -->
-        <h4>Mulheres + Fortes</h4>
         <p>&copy; 2025 Todos os direitos reservados. Construindo um futuro livre de violência!</p>
         <!-- Crédito da Desenvolvedora -->
         <p>Desenvolvido por Deise Kelly Sanguin</p>
-        <nav>
-            <a href="index.html">Início</a> | <a href="projetos.html">Projetos</a> | <a href="cadastro.html">Quero Ajudar</a>
-        </nav>
     </footer>
 
+    <!-- CHATBOT -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle-btn" aria-label="Abrir chat de ajuda">
+            <span>Chat</span>
+        </button>
+        <div id="chatbot-window" class="hidden" role="dialog" aria-labelledby="chatbot-header">
+            <div id="chatbot-header">
+                <h3>Assistente Virtual</h3>
+                <button id="chatbot-close-btn" aria-label="Fechar chat">&times;</button>
+            </div>
+            <div id="chatbot-messages" aria-live="polite" aria-atomic="false">
+                <!-- As mensagens aparecerão aqui -->
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Digite sua dúvida...">
+                <button id="chatbot-send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
 </body>
 </html>

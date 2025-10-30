@@ -1,0 +1,6 @@
+<svg width="400" height="60" viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: -1px; }
+  </style>
+  <text x="0" y="45" class="logo-text" fill="#6A0DAD">Mulheres <tspan fill="#C471ED" style="font-size: 48px; font-weight: 700;">+</tspan> Fortes</text>
+</svg>
