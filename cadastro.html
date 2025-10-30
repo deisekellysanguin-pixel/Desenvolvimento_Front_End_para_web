@@ -19,6 +19,11 @@
             <div class="logo-text">Mulheres <span>+</span> Fortes</div>
         </a>
 
+        <!-- Controles de Tema (Centralizado no Header) -->
+        <div class="theme-controls">
+            <button id="theme-toggle-dark" aria-label="Ativar modo escuro">◐</button>
+        </div>
+        
         <!-- Botão do Menu Hambúrguer (para telas menores) -->
         <button id="btn-mobile" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
             <span class="hamburger"></span>
@@ -102,7 +107,7 @@
                                 <div class="row row-form">
                                     <!-- Endereço -->
                                     <div class="col-md-6">
-                                        <label for="endereco">Rua, Número</label>
+                                        <label for="endereco">Rua/Av, Número</label>
                                         <input type="text" id="endereco" name="endereco" placeholder="Rua Exemplo, 123" required>
                                     </div>
                                     <!-- CEP (Com Validação de Padrão) -->
@@ -190,7 +195,7 @@
                 <h3>Assistente Virtual</h3>
                 <button id="chatbot-close-btn" aria-label="Fechar chat">&times;</button>
             </div>
-            <div id="chatbot-messages">
+            <div id="chatbot-messages" aria-live="polite" aria-atomic="false">
                 <!-- As mensagens aparecerão aqui -->
             </div>
             <div id="chatbot-input-container">

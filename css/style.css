@@ -6,7 +6,8 @@
     /* Cores Primárias e de Destaque */
     --cor-primaria: #6A0DAD; /* Roxo principal */
     --cor-primaria-escura: #580a8a; /* Roxo escuro para hover/interação */
-    --cor-secundaria: #C471ED; /* Lilás/Rosa para destaque */
+    --cor-secundaria: #9D4EDD; /* Lilás/Rosa para destaque (Ajustado para contraste AA) */
+    --cor-acento: #D81B60; /* Rosa vibrante para ações importantes */
 
     /* Neutras */
     --cor-texto: #333; /* Cinza Escuro */
@@ -109,16 +110,44 @@ p {
     margin: 0 auto var(--space-lg) auto;
 }
 
-a {
-    text-decoration: none;
-    color: var(--cor-primaria);
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    transition: color 0.3s ease;
+/* ------------------- */
+/* TEMAS (MODO ESCURO E ALTO CONTRASTE) */
+/* ------------------- */
+
+body.dark-mode {
+    --cor-primaria: #9D4EDD; /* Lilás mais claro para se destacar no fundo escuro */
+    --cor-primaria-escura: #C471ED;
+    --cor-secundaria: #C471ED;
+    --cor-texto: #E0E0E0; /* Cinza claro para texto */
+    --cor-fundo: #121212; /* Fundo escuro padrão */
+    --cor-borda-suave: #333;
+    --cor-branco: #1E1E1E; /* Cor dos cards e header */
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Ajuste para os cards de impacto no modo escuro */
+body.dark-mode .stat-card {
+    background-color: rgba(0, 0, 0, 0.15); /* Fundo mais escuro e sutil */
+    border-color: rgba(255, 255, 255, 0.1); /* Borda menos proeminente */
+}
+/* Paleta de Cores para Modo de Alto Contraste (mantida para referência, mas não usada atualmente) */
+body.high-contrast-mode {
+    --cor-primaria: #FFFF00;
+    --cor-secundaria: #FFFF00;
+    --cor-texto: #FFFFFF; /* Texto branco */
+    --cor-fundo: #000000; /* Fundo preto */
+    --cor-borda-suave: #FFFFFF;
+    --cor-branco: #000000; /* Cards e header pretos com borda */
+    --sombra-suave: none; /* Remove sombras */
+}
+
+/* Ajuste para cards em alto contraste terem borda */
+body.high-contrast-mode article, body.high-contrast-mode #cadastro-form {
+    border: 2px solid var(--cor-primaria);
 }
 
 a:hover {
-    color: var(--cor-secundaria);
+    color: var(--cor-primaria-escura); /* Usando o roxo mais escuro para garantir contraste no hover */
 }
 
 img {
@@ -177,6 +206,40 @@ header {
     margin: 0 2px;
     transition: transform 0.3s ease;
     display: inline-block;
+}
+
+/* Estilos para os botões de controle de tema */
+.theme-controls {
+    display: flex;
+    gap: var(--space-xs);
+    margin-left: auto;
+    margin-right: var(--space-md);
+}
+
+.theme-controls button {
+    background: none;
+    border: none;
+    /* A borda foi removida para um visual mais limpo.
+       A cor do ícone já é a cor primária.
+    */
+    color: var(--cor-primaria);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Fundo sutil no hover */
+    color: var(--cor-primaria-escura);
+}
+
+/* Muda a cor do ícone do tema quando o modo escuro está ativo */
+.theme-controls button.active {
+    color: var(--cor-secundaria);
+    transform: rotate(180deg); /* Adiciona uma pequena rotação para feedback visual */
 }
 
 header > a:hover .logo-text span {
@@ -292,19 +355,20 @@ footer p:last-of-type {
 }
 
 #hero a {
-    background-color: var(--cor-branco);
-    color: var(--cor-primaria);
+    background-color: var(--cor-acento);
+    color: var(--cor-branco);
     padding: var(--space-xs) var(--space-md); /* Diminui o padding do botão */
     border-radius: 50px;
     display: inline-block;
     margin-top: var(--space-sm); /* Diminui o espaço acima do botão */
     font-weight: 700;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #hero a:hover {
-    transform: translateY(-3px);
-    background-color: #f0e4f7; /* Lilás bem claro para o hover */
+    transform: translateY(-3px) scale(1.05);
+    background-color: #e91e63; /* Um tom um pouco mais claro do acento para o hover */
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
 }
 
 /* Melhora o espaçamento entre os artigos da seção "Quem Somos" */
@@ -329,14 +393,14 @@ footer p:last-of-type {
 
 /* Ajusta o tamanho do título dentro dos cards da missão */
 #quem-somos article h3 {
-    color: var(--cor-secundaria);
+    color: var(--cor-primaria); /* Usando a cor primária para garantir contraste */
     font-size: 1.5rem; /* Um pouco menor para caber melhor no card */
     transition: color 0.3s ease; /* Adiciona transição para a mudança de cor */
 }
 
 /* Ajusta o texto e a lista dentro dos cards da missão */
 #quem-somos article p, #quem-somos article li {
-    color: #555;
+    color: var(--cor-texto); /* Usando a variável global para consistência e bom contraste */
     font-size: 0.95rem;
     text-align: center; /* Centraliza o texto dos cards */
 }
@@ -560,6 +624,7 @@ footer p:last-of-type {
 
 #ajudar {
     background-color: var(--cor-fundo); /* Fundo da seção para destacar os cards */
+    padding-top: var(--space-lg); /* Reduz o espaçamento superior, padrão era --space-xxl */
 }
 
 #ajudar #voluntariado, #ajudar #doacoes {
@@ -810,6 +875,20 @@ footer p:last-of-type {
 /* RESPONSIVIDADE      */
 /* ------------------- */
 
+/* Estilos para telas pequenas (até 767px) */
+@media (max-width: 767px) {
+    /* Ajusta a tipografia para melhor legibilidade em dispositivos móveis */
+    h1 {
+        font-size: var(--font-size-xl); /* Reduz o h1 de 3.052rem para 2.441rem */
+    }
+
+    h2 {
+        font-size: var(--font-size-lg); /* Reduz o h2 de 2.441rem para 1.953rem */
+    }
+
+    section { padding: var(--space-xl) var(--space-sm); } /* Reduz o padding vertical das seções */
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .container { max-width: 540px; }
@@ -897,6 +976,8 @@ footer p:last-of-type {
     border: none;
     border-radius: 30px; /* Transforma em pílula */
     width: auto; /* Largura automática */
+    border-radius: 50%; /* Transforma em círculo */
+    width: 60px; /* Largura fixa */
     height: 60px;
     padding: 0 var(--space-md); /* Espaçamento interno horizontal */
     box-shadow: var(--sombra-suave);
@@ -992,31 +1073,57 @@ footer p:last-of-type {
     white-space: pre-line; /* Garante que as quebras de linha (\n) sejam renderizadas */
     font-size: 0.9rem; /* Fonte menor para as mensagens */
 }
-
+/* Ajustes para o modo escuro */
+body.dark-mode #chatbot-window {
+    background-color: #2c2c2c; /* Um cinza um pouco mais claro que o fundo */
+}
+body.dark-mode .bot-message {
+    background-color: #3a3a3a; /* Fundo da mensagem do bot */
+    color: var(--cor-texto); /* Texto claro */
+}
+body.dark-mode .user-message {
+    color: #FFFFFF; /* Garante que o texto do usuário seja sempre branco */
+}
+body.dark-mode #chatbot-header, body.dark-mode #chatbot-send-btn {
+    color: #FFFFFF; /* Garante que o texto do header e do botão de enviar seja branco */
+}
 .bot-message {
     background-color: #f1f0f0;
     align-self: flex-start;
 }
-
 .user-message {
     background-color: var(--cor-secundaria);
     color: var(--cor-branco);
     align-self: flex-end;
 }
 
+/* Ajustes para o modo de alto contraste */
+body.high-contrast-mode .bot-message {
+    background-color: #333; /* Fundo cinza escuro para a mensagem do bot */
+    color: var(--cor-texto); /* Texto branco, conforme definido no tema */
+    border: 1px solid var(--cor-borda-suave);
+}
+
 #chatbot-input-container {
     display: flex;
     padding: var(--space-sm);
-    border-top: 1px solid var(--cor-borda-suave);
-}
-
-#chatbot-input {
-    flex-grow: 1;
     border: 1px solid var(--cor-borda-suave);
     border-radius: 20px;
     padding: var(--space-xs) var(--space-sm);
     margin-right: var(--space-xs);
     font-size: 0.9rem; /* Fonte menor para o input */
+}
+
+body.dark-mode #chatbot-input {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: var(--cor-texto);
+}
+
+body.high-contrast-mode #chatbot-input {
+    background-color: #1c1c1c;
+    border-color: var(--cor-borda-suave);
+    color: var(--cor-texto);
 }
 
 #chatbot-send-btn {
@@ -1052,6 +1159,21 @@ footer p:last-of-type {
 
 /* Remove a sombra de foco padrão para não conflitar com a nossa e melhora a transição */
 #cadastro-form input:focus {
-    box-shadow: none;
     border-color: var(--cor-primaria);
+}
+
+/* ------------------- */
+/* FOCO DE ACESSIBILIDADE */
+/* ------------------- */
+
+/* Adiciona um indicador de foco visível para todos os elementos focáveis,
+   garantindo conformidade com WCAG 2.4.7 (Focus Visible). */
+:is(a, button, input, select):focus-visible {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
+}
+
+/* Impede a rolagem do corpo da página quando o menu mobile está aberto */
+body.menu-open {
+    overflow: hidden;
 }

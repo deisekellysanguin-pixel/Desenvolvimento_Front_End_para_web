@@ -22,13 +22,17 @@ function initMobileMenu() {
     const toggleMenu = (event) => {
         // Previne o comportamento padrão de eventos de toque, como zoom.
         if (event.type === 'touchstart') event.preventDefault();
-        
-        btnMobile.classList.toggle('active');
-        navMenu.classList.toggle('active');
 
+        const body = document.body;
         const isMenuActive = navMenu.classList.contains('active');
-        btnMobile.setAttribute('aria-expanded', isMenuActive);
-        btnMobile.setAttribute('aria-label', isMenuActive ? 'Fechar menu' : 'Abrir menu');
+
+        // Alterna as classes
+        btnMobile.classList.toggle('active', !isMenuActive);
+        navMenu.classList.toggle('active', !isMenuActive);
+        body.classList.toggle('menu-open', !isMenuActive); // Adiciona/remove a classe no body
+
+        btnMobile.setAttribute('aria-expanded', !isMenuActive);
+        btnMobile.setAttribute('aria-label', !isMenuActive ? 'Fechar menu' : 'Abrir menu');
     };
 
     btnMobile.addEventListener('click', toggleMenu);
@@ -251,11 +255,57 @@ function initForm() {
 
 /**
  * --------------------------------------
+ * FUNCIONALIDADE DE TROCA DE TEMA
+ * --------------------------------------
+ * Controla a alternância entre modo claro, escuro e de alto contraste.
+ * Salva a preferência do usuário no localStorage.
+ */
+function initThemeSwitcher() {
+    const darkThemeBtn = document.getElementById('theme-toggle-dark');
+    const body = document.body;
+
+    if (!darkThemeBtn) return; // Se o botão não existir, a função não executa.
+
+    const applyTheme = (theme) => {
+        body.classList.remove('dark-mode');
+        if (theme === 'dark-mode') {
+            body.classList.add(theme);
+            darkThemeBtn.classList.add('active');
+            darkThemeBtn.setAttribute('aria-label', 'Ativar modo claro');
+        } else {
+            // Modo claro
+            darkThemeBtn.classList.remove('active');
+            darkThemeBtn.setAttribute('aria-label', 'Ativar modo escuro');
+        }
+        localStorage.setItem('theme', theme || 'light'); // Salva 'light' se o tema for nulo
+    };
+
+    // Aplica o tema salvo ao carregar a página
+    const savedTheme = localStorage.getItem('theme');
+    // Garante que temas antigos inválidos sejam tratados como 'light'
+    const validTheme = savedTheme === 'dark-mode' ? 'dark-mode' : 'light';
+    applyTheme(validTheme);
+
+    darkThemeBtn.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            applyTheme(null); // Volta para o modo claro
+        } else {
+            applyTheme('dark-mode');
+        }
+    });
+}
+
+
+/**
+ * --------------------------------------
  * INICIALIZAÇÃO DOS MÓDULOS
  * --------------------------------------
  * Chama todas as funções para ativar as funcionalidades do site.
  */
+document.addEventListener('DOMContentLoaded', () => {
 initMobileMenu(); // Ativa o menu mobile em todas as páginas.
 initChatbot();    // Ativa o chatbot em todas as páginas.
 initForm();       // Ativa o formulário (só executa na página de cadastro).
 initPixCopy();    // Ativa a funcionalidade PIX (só executa na página de projetos).
+initThemeSwitcher(); // Ativa a funcionalidade de troca de tema.
+});
