@@ -110,6 +110,26 @@ p {
     margin: 0 auto var(--space-lg) auto;
 }
 
+/* Estilos para o link interativo na seção "Quem Somos" */
+.interactive-highlight {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block; /* Garante que a transformação funcione corretamente */
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.interactive-highlight:hover,
+.interactive-highlight:focus {
+    color: #C71585; /* Cor de destaque da página */
+    transform: scale(1.05); /* Aumenta levemente o tamanho */
+    text-shadow: 0 0 5px rgba(199, 21, 133, 0.3); /* Adiciona um brilho sutil */
+    outline: none; /* Remove a borda de foco padrão para um visual mais limpo */
+}
+
+
 /* ------------------- */
 /* TEMAS (MODO ESCURO E ALTO CONTRASTE) */
 /* ------------------- */
@@ -456,6 +476,33 @@ footer p:last-of-type {
     font-style: italic;
 }
 
+/* Estilos para a sobreposição de texto na imagem da seção "Quem Somos" */
+.image-overlay-container {
+    position: relative; /* Necessário para posicionar o conteúdo filho absolutamente */
+    overflow: hidden; /* Garante que os cantos arredondados da imagem sejam respeitados */
+}
+
+.image-overlay-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
+    padding: var(--space-md);
+    text-align: center;
+    transform: translateY(0);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.image-overlay-content a {
+    color: var(--cor-branco); /* Texto branco para contrastar com o fundo */
+}
+
+.image-overlay-container:hover .image-overlay-content {
+    background-color: rgba(0, 0, 0, 0.75); /* Fica mais opaco no hover */
+    transform: translateY(-5px); /* Sobe um pouco para indicar interatividade */
+}
+
 #impacto {
     background: linear-gradient(to right, var(--cor-primaria), var(--cor-primaria-escura));
     color: var(--cor-branco);
@@ -471,11 +518,11 @@ footer p:last-of-type {
     text-align: center;
     /* display: flex e justify-content agora são controlados pelo .row */
     /* gap é controlado pelo espaçamento das colunas */
-    padding-top: var(--space-lg);
+    padding-top: var(--space-md); /* Reduzido o espaço acima das estatísticas */
 }
 
 #impacto h3 {
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-xl); /* Reduzido o tamanho da fonte dos números */
     color: var(--cor-secundaria);
     text-shadow: 0 2px 10px rgba(196, 113, 237, 0.3);
 }
@@ -484,9 +531,6 @@ footer p:last-of-type {
 .stat-card {
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: var(--space-md);
-    border-radius: 8px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .stat-card:hover {
