@@ -32,7 +32,7 @@
         <nav id="menu-principal" aria-label="Navegação Principal">
             <a href="index.html">Início</a>
             <a href="projetos.html">Projetos</a>
-            <a href="cadastro.html">Quero Ajudar</a>
+            <a href="cadastro.html">Cadastro</a>
         </nav>
     </header>
 
@@ -44,28 +44,26 @@
             <h1>
                 Juntas, Somos a Força Que Nenhuma Violência Pode Quebrar!
             </h1>
-            <p>
-                A "Mulheres + Fortes" oferece apoio integral, jurídico e psicológico para mulheres que enfrentam a violência doméstica. Você não está sozinha!
-            </p>
-            <a href="#contato">
-                Fale Conosco
-            </a>
+            <p>A "Mulheres + Fortes" oferece apoio integral, jurídico e psicológico para mulheres que enfrentam a violência doméstica.</p>
         </section>
 
         <!-- SEÇÃO QUEM SOMOS E MISSÃO -->
         <section id="quem-somos">
             <!-- Nível de título 2 -->
             <div class="container">
-                <h2>Nosso Propósito</h2>
-                <p class="section-subtitle">A "Mulheres + Fortes" oferece apoio integral, jurídico e psicológico para mulheres que enfrentam a violência doméstica. Você não está sozinha.</p>
+                <!-- Título adicionado para acessibilidade, mas oculto visualmente -->
+                <h2 class="sr-only">Quem Somos</h2>
                 <div class="row justify-content-center">
                     <!-- Imagem relacionada à Missão -->
                     <div class="col-lg-8">
-                        <figure class="quem-somos-image">
+                        <figure class="quem-somos-image image-overlay-container">
                             <img src="imagens/mulheres.jpg" 
                                  alt="Um grupo de mulheres de diversas etnias e idades, vestindo camisetas cor-de-rosa, unindo as mãos em um gesto de apoio e solidariedade." 
                                  loading="lazy">
-                            <figcaption>Comunidade, Força e Solidariedade!</figcaption>
+                            <!-- Bloco de destaque movido para sobre a imagem -->
+                            <div class="image-overlay-content">
+                                <a href="#contato" class="interactive-highlight">Você não está sozinha!</a>
+                            </div>
                         </figure>
                     </div>
                 </div>
